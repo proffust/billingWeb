@@ -1,0 +1,23 @@
+<%= form_for :user do |new_user_form| %>
+<div id="leftcol">
+<p>
+  <%= label_tag(:name, "Имя пользователя") %>
+  <%= new_user_form.text_field :name %>
+</p>
+<p>
+  <%= label_tag(:address, "Адрес") %>
+  <%= new_user_form.text_field :address %>
+</p>
+<p>
+  <%= label_tag(:is_router, "Роутер?") %>
+  <%= check_box_tag(:is_router) %>
+</p>
+<p>
+  <%= label_tag(:date, "Дата отключения") %>
+  <%= new_user_form.date_field :date %>
+</p>
+  <%= new_user_form.submit %>
+</div>
+
+
+<% end %>

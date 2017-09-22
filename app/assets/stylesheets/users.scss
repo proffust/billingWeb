@@ -1,3 +1,16 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  font-family: Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
+  margin: 0; /* Обнуляем отступы браузера */
+}
+#leftcol { /* Левая колонка */
+  margin-left: inherit;
+  margin-left: 1%;
+  float: left; /* Обтекание справа */
+  width: 30%; /* Ширина колонки */
+}
+#rightcol { /* Правая колонка */
+  margin-left: 11%; /* Отступ слева */
+}
