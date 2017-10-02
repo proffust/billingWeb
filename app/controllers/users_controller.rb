@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    render plain: params[:user].inspect
+    @user = User.new(users_params)
+    @user.save
+    redirect_to @user
   end
 
   def edit
@@ -16,5 +18,15 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  private
+    def users_params
+      params.require(:user).permit(:name, :address, :is_router, :date_of_disconnect)
+    end
 end
