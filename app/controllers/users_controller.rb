@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   def new
   end
 
+  def create
+    render plain: params[:user].inspect
+  end
+
   def edit
   end
 
@@ -10,5 +14,7 @@ class UsersController < ApplicationController
 
   def destroy
   end
-  
+
+  def index
+  end
 end
