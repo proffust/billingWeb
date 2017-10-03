@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002174306) do
+ActiveRecord::Schema.define(version: 20171003151833) do
+
+  create_table "nats", force: :cascade do |t|
+    t.string "name"
+    t.integer "ext_port"
+    t.integer "int_port"
+    t.string "int_ip"
+    t.boolean "state"
+    t.string "owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ext_port"], name: "index_nats_on_ext_port", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

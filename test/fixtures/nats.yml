@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ext_port: 1
+  int_port: 1
+  int_ip: MyString
+  state: false
+  owner: MyString
+
+two:
+  name: MyString
+  ext_port: 1
+  int_port: 1
+  int_ip: MyString
+  state: false
+  owner: MyString
