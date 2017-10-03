@@ -1,4 +1,19 @@
 <%= form_with scope: :nat, url: nats_path, local: true do |new_nat_form| %>
+
+<% if @nat.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@nat.errors.count, "error") %> prohibited
+      this nat from being saved:
+    </h2>
+    <ul>
+      <% @nat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div id="leftcol">
 <p>
   <%= label_tag(:name, "Имя правила") %>

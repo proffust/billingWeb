@@ -1,13 +1,17 @@
 class NatsController < ApplicationController
   def new
+    @nat = Nat.new
   end
 
   def create
-    nat = Nat.new(nats_params)
-    nat.state = true;
-    nat.owner = 1;
-    nat.save
-    redirect_to action: "index"
+    @nat = Nat.new(nats_params)
+    @nat.state = true
+    @nat.owner = 1
+    if @nat.save
+      redirect_to action: "index"
+    else
+      render 'new'
+    end
   end
 
   def edit
