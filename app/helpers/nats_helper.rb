@@ -1,0 +1,2 @@
+module NatsHelper
+end

@@ -7,5 +7,10 @@ Rails.application.routes.draw do
       get 'extend'
     end
   end
-  resources :nats
+  resources :nats do
+    member do
+      get 'activate'
+      get 'deactivate'
+    end
+  end
 end
