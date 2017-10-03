@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
     @user.access_state = true
     if @user.save
-    redirect_to action: "index"
+      redirect_to action: "index"
     else
       render 'new'
     end
