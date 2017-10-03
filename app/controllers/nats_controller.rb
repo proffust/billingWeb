@@ -46,6 +46,12 @@ class NatsController < ApplicationController
     redirect_to action: "index"
   end
 
+  def destroy
+    nat = Nat.find(params[:id])
+    nat.destroy
+    redirect_to action: "index"
+  end
+
   private
     def nats_params
       params.require(:nat).permit(:name, :ext_port, :int_port, :int_ip)

@@ -32,9 +32,8 @@
     <% end %>
     <td><%= link_to 'Продлить на месяц', extend_user_path(user) %></td>
     <td><%= link_to 'Редактировать', edit_user_path(user) %></td>
-    <td><%= link_to 'Удалить', user,
-               :confirm => 'Are you sure?',
-               :method => :delete %>
+    <td><%= link_to 'Удалить', user, :method => :delete,
+               data: { confirm: "Are you sure?" } %>
     </td>
     </tr>
   <% end %>

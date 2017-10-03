@@ -30,9 +30,8 @@
       <td><%= link_to 'Включить', activate_nat_path(nat) %></td>
     <% end %>
     <td><%= link_to 'Редактировать', edit_nat_path(nat) %></td>
-    <td><%= link_to 'Удалить', nat,
-               :confirm => 'Are you sure?',
-               :method => :delete %>
+    <td><%= link_to 'Удалить', nat,:method => :delete,
+                  data: { confirm: "Are you sure?" }%>
     </td>
     </tr>
   <% end %>
