@@ -1,0 +1,7 @@
+<% if auth_user_signed_in? %>
+    <span>Здравствуйте, <%= current_auth_user.email %></span>
+    <span>Ваш ID <%= current_auth_user.id %></span>
+    <%= link_to 'Выйти', destroy_auth_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to 'Войти', new_auth_user_session_path %> или <%= link_to 'Зарегистрироваться', new_auth_user_registration_path %>
+<% end %>

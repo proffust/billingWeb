@@ -1,4 +1,5 @@
 class NatsController < ApplicationController
+  before_action :authenticate_auth_user!
   def new
     @nat = Nat.new
   end
