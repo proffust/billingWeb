@@ -4,24 +4,34 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {
-      email: TestString
-      encrypted_password: TestString
-      ## Recoverable
-      reset_password_token: TestString
-      reset_password_sent_at: 2017-10-02 20:54:05
-      ## Rememberable
-      remember_created_at: 2017-10-02 20:54:05
-      ## Trackable
-      sign_in_count: 0
-      current_sign_in_at: 2017-10-02 20:54:05
-      last_sign_in_at: 2017-10-02 20:54:05
-      current_sign_in_ip: TestString
-      last_sign_in_ip: TestString
-
-
-  }
+one:
+  email: user1@mysite.com
+  encrypted_password: TestString
+  ## Recoverable
+  reset_password_token: TestString
+  reset_password_sent_at: 2017-10-02 20:54:05
+  ## Rememberable
+  remember_created_at: 2017-10-02 20:54:05
+  ## Trackable
+  sign_in_count: 0
+  current_sign_in_at: 2017-10-02 20:54:05
+  last_sign_in_at: 2017-10-02 20:54:05
+  current_sign_in_ip: TestString
+  last_sign_in_ip: TestString
 # column: value
 #
-two: {}
+#two:
+#  email: user1@mysite.com
+#  encrypted_password: TestString
+#  ## Recoverable
+#  reset_password_token: TestString
+#  reset_password_sent_at: 2017-10-02 20:54:05
+#  ## Rememberable
+#  remember_created_at: 2017-10-02 20:54:05
+#  ## Trackable
+#  sign_in_count: 0
+#  current_sign_in_at: 2017-10-02 20:54:05
+#  last_sign_in_at: 2017-10-02 20:54:05
+#  current_sign_in_ip: TestString
+#  last_sign_in_ip: TestStrin
 # column: value

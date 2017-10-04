@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class NatsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+   test "should be get index" do
+     get nats_path
+     assert_response :redirect
+   end
 end

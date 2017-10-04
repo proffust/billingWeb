@@ -7,9 +7,9 @@ one:
   date_of_disconnect: 2017-10-02
   access_state: false
 
-two:
-  name: MyString
-  address: MyString
-  is_router: false
-  date_of_disconnect: 2017-10-02
-  access_state: false
+#two:
+#  name: MyString
+#  address: MyString
+#  is_router: false
+#  date_of_disconnect: 2017-10-02
+#  access_state: false
