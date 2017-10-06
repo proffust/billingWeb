@@ -7,7 +7,7 @@ class NatsController < ApplicationController
   def create
     @nat = Nat.new(nats_params)
     @nat.state = true
-    @nat.owner = 1
+    @nat.owner = current_auth_user.id
     if @nat.save
       redirect_to action: "index"
     else
@@ -21,8 +21,10 @@ class NatsController < ApplicationController
 
   def update
     nat = Nat.find(params[:id])
-    nat.update(nats_params)
-    redirect_to action: "index"
+    if nat.update(nats_params)
+      redirect_to action: "index"
+    else
+      render 'edit'
   end
 
   def show

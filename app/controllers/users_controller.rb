@@ -20,8 +20,10 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(users_params)
-    redirect_to action: "index"
+    if user.update(users_params)
+      redirect_to action: "index"
+    else
+      render 'edit'
   end
 
   def index
