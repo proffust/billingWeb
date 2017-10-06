@@ -10,6 +10,14 @@ default: &default
   timeout: 5000
 
 development:
+#  adapter: mysql2
+#  encoding: utf8
+#  database: BillingDB
+#  host: localhost
+#  pool: 5
+#  username: rails
+#  password: password
+#  socket: /var/run/mysqld/mysqld.sock
   <<: *default
   database: db/development.sqlite3
 
