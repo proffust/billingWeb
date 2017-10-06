@@ -31,3 +31,6 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+
+#создание БД  CREATE DATABASE BillingDB DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
