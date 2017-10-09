@@ -1,6 +1,6 @@
 class NatsController < ApplicationController
   before_action :authenticate_auth_user!
-  MTik::verbose=true
+  MTik::verbose=false
   def new
     @nat = Nat.new
   end
