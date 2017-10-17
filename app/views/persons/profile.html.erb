@@ -1,7 +1,21 @@
 <% if auth_user_signed_in? %>
-    <span>Здравствуйте, <%= current_auth_user.email %></span>
-    <span>Ваш ID <%= current_auth_user.id %></span>
-    <%= link_to 'Выйти', destroy_auth_user_session_path, :method => :delete %>
+    <div class="forms">
+    <div class="form-row">
+      Здравствуйте, <%= current_auth_user.email %>
+    </div>
+    <div class="form-row">
+      Ваш ID <%= current_auth_user.id %>
+    </div>
+    <div class="form-row">
+      <%= link_to 'Пользователи', users_path, class:"index-button"%>
+    </div>
+    <div class="form-row">
+      <%= link_to 'Наты', nats_path, class:"index-button"%>
+    </div>
+    <div class="form-row">
+      <%= link_to 'Выйти', destroy_auth_user_session_path, :method => :delete, class:"index-button" %>
+    </div>
+  </div>
 <% else %>
-    <%= link_to 'Войти', new_auth_user_session_path %> или <%= link_to 'Зарегистрироваться', new_auth_user_registration_path %>
+    <%= link_to 'Войти', new_auth_user_session_path,class:"index-button" %><p> или <p><%= link_to 'Зарегистрироваться', new_auth_user_registration_path %>
 <% end %>

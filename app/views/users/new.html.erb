@@ -1,37 +1,4 @@
-<%= form_with scope: :user, url: users_path, local: true do |new_user_form| %>
-
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@user.errors.count, "error") %> prohibited
-      this nat from being saved:
-    </h2>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<div id="leftcol">
-<p>
-  <%= label_tag(:name, "Имя пользователя") %>
-  <%= new_user_form.text_field :name %>
-</p>
-<p>
-  <%= label_tag(:address, "Адрес") %>
-  <%= new_user_form.text_field :address %>
-</p>
-<p>
-  <%= label_tag(:is_router, "Роутер?") %>
-  <%= new_user_form.check_box :is_router %>
-</p>
-<p>
-  <%= label_tag(:date, "Дата отключения") %>
-  <%= new_user_form.date_field :date_of_disconnect %>
-</p>
-  <%= new_user_form.submit %>
+<div class="forms">
+<h1>Добавление пользователя</h1>
+<%= render 'form' %>
 </div>
-
-<% end %>

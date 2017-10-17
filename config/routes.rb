@@ -16,5 +16,5 @@ Rails.application.routes.draw do
       get 'deactivate'
     end
   end
-  root 'users#index'
+  root 'persons#profile'
 end

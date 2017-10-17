@@ -1,33 +1,23 @@
-<h1>Все наты</h1>
-<%= link_to 'Добавить Нат', new_nat_path %>
-<table>
+<table class="table_styled">
+  <caption>Все наты <%= link_to 'Добавить Нат', new_nat_path, class:"no_decoration" %></caption>
   <tr>
     <th>Имя</th>
     <th>Внешний порт</th>
     <th>Внутренний порт</th>
     <th>Внутренний IP</th>
-    <th>Состояние</th>
-    <th></th>
-    <th></th>
-    <th></th>
-
+    <th colspan="4">Действия</th>
   </tr>
 
   <% @nats.each do |nat| %>
-    <% if nat.state %>
-      <tr bgcolor=green>
-    <% else %>
-      <tr bgcolor=red>
-    <% end %>
-
+    <tr>
     <td><%= nat.name %></td>
     <td><%= nat.ext_port %></td>
     <td><%= nat.int_port %></td>
     <td><%= nat.int_ip %></td>
     <% if nat.state %>
-      <td><%= link_to 'Выключить', deactivate_nat_path(nat) %></td>
+      <td><%= link_to 'Выключить', deactivate_nat_path(nat),class:"off" %></td>
     <% else %>
-      <td><%= link_to 'Включить', activate_nat_path(nat) %></td>
+      <td><%= link_to 'Включить', activate_nat_path(nat),class:"on" %></td>
     <% end %>
     <td><%= link_to 'Редактировать', edit_nat_path(nat) %></td>
     <td><%= link_to 'Удалить', nat,:method => :delete,

@@ -1,0 +1,39 @@
+<%= form_with model: @nat, class: "user_form", local: true do |form| %>
+<% if @nat.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@nat.errors.count, "error") %> prohibited
+      this nat from being saved:
+    </h2>
+    <ul>
+      <% @nat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class='form-row'>
+  <%= label_tag(:name, "Имя правила") %>
+  <%= form.text_field :name %>
+</div>
+<div class='form-row'>
+  <%= label_tag(:ext_port, "Внешний порт") %>
+  <%= form.text_field :ext_port %>
+</div>
+<div class='form-row'>
+  <%= label_tag(:int_port, "Внутренний порт") %>
+  <%= form.text_field :int_port %>
+</div>
+<div class='form-row'>
+  <%= label_tag(:int_ip, "Внутренний IP") %>
+  <%= form.text_field :int_ip %>
+</div>
+<div class='form-row'>
+  <%= form.submit %>
+</div>
+<div class='form-row'>
+  <%= link_to "Назад", nats_path, class: "form-row" %>
+</div>
+
+<% end %>

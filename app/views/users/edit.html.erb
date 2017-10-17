@@ -1,22 +1,4 @@
-<%= form_with model: @user, local: true do |edit_user_form| %>
-  <div id="leftcol">
-  <p>
-    <%= edit_user_form.label(:name, "Имя пользователя") %>
-    <%= edit_user_form.text_field :name %>
-  </p>
-  <p>
-    <%= edit_user_form.label(:address, "Адрес") %>
-    <%= edit_user_form.text_field :address %>
-  </p>
-  <p>
-    <%= edit_user_form.label(:is_router, "Роутер?") %>
-    <%= edit_user_form.check_box :is_router %>
-  </p>
-  <p>
-    <%= edit_user_form.label(:date_of_disconnect, "Дата отключения") %>
-    <%= edit_user_form.date_field :date_of_disconnect %>
-  </p>
-    <%= edit_user_form.submit %>
-  </div>
-
-<% end %>
+<div class="forms">
+<h1>Редактирование пользователя</h1>
+<%= render 'form' %>
+</div>

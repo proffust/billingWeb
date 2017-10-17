@@ -1,40 +1,28 @@
-<h1>Все пользователи</h1>
-<%= link_to 'Добавить пользователя', new_user_path %>
-<table>
+<table class="table_styled">
+  <caption>Все пользователи <%=link_to 'Добавить пользователя', new_user_path, class:"no_decoration"%></caption>
   <tr>
     <th>Имя</th>
     <th>Адрес</th>
-    <th>Роутер?</th>
+    <th>Тариф</th>
     <th>Дата отключения</th>
-    <th>Состояние</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-
+    <th colspan="4">Действия</th>
   </tr>
 
   <% @users.each do |user| %>
-    <% if user.access_state %>
-      <tr bgcolor=green>
-    <% else %>
-      <tr bgcolor=red>
-    <% end %>
-
+    <tr>
     <td><%= user.name %></td>
     <td><%= user.address %></td>
-    <td><%= user.is_router %></td>
+    <td><%= user.is_router ? "Роутер" : "Обычный пользователь" %></td>
     <td><%= user.date_of_disconnect %></td>
     <% if user.access_state %>
-      <td><%= link_to 'Выключить', deactivate_user_path(user) %></td>
+      <td><%= link_to 'Выключить', deactivate_user_path(user), class: "off" %></td>
     <% else %>
-      <td><%= link_to 'Включить', activate_user_path(user) %></td>
+      <td><%= link_to 'Включить', activate_user_path(user), class: "on" %></td>
     <% end %>
     <td><%= link_to 'Продлить на месяц', extend_user_path(user) %></td>
     <td><%= link_to 'Редактировать', edit_user_path(user) %></td>
     <td><%= link_to 'Удалить', user, :method => :delete,
-               data: { confirm: "Are you sure?" } %>
-    </td>
+               data: { confirm: "Are you sure?" } %></td>
     </tr>
   <% end %>
 </table>
