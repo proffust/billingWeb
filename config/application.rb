@@ -6,7 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module TemplateProject
+module BillingWeb
+  M_HOST = "10.11.10.239"
+  M_USER = "admin"
+  M_PASS = "password"
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1

@@ -1,15 +1,12 @@
 class NatsController < ApplicationController
   before_action :authenticate_auth_user!
-  M_HOST = "10.11.10.217"
-  M_USER = "admin"
-  M_PASS = "password"
   MTik::verbose=false
   def new
     @nat = Nat.new
   end
 
   def create
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     @nat = Nat.new(nats_params)
     @nat.state = true
     @nat.owner = current_auth_user.id
@@ -21,7 +18,7 @@ class NatsController < ApplicationController
       "=to-addresses=#{@nat.int_ip}",
       "=to-ports=#{@nat.int_port}",
       "=protocol=tcp",
-      "=in-interface=ether2",
+      "=in-interface=ether1",
       "=dst-port=#{@nat.ext_port}",
       "=comment=#{@nat.name}_#{Nat.last['id']}") do |request, sentence|
         @trap = request.reply.find_sentence('!trap')
@@ -43,7 +40,7 @@ class NatsController < ApplicationController
   end
 
   def update
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     nat = Nat.find(params[:id])
     edit_nat_id = tik.get_reply('/ip/firewall/nat/print',
                                 ".proplist=.id",
@@ -55,7 +52,7 @@ class NatsController < ApplicationController
                     "=to-addresses=#{nat.int_ip}",
                     "=to-ports=#{nat.int_port}",
                     "=protocol=tcp",
-                    "=in-interface=ether2",
+                    "=in-interface=ether1",
                     "=dst-port=#{nat.ext_port}",
                     "=comment=#{nat.name}_#{nat.id}",
                     "=.id=#{edit_nat_id}")
@@ -75,7 +72,7 @@ class NatsController < ApplicationController
   end
 
   def activate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     nat = Nat.find(params[:id])
     edit_nat_id = tik.get_reply('/ip/firewall/nat/print',
                                 ".proplist=.id",
@@ -90,7 +87,7 @@ class NatsController < ApplicationController
   end
 
   def deactivate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     nat = Nat.find(params[:id])
     edit_nat_id = tik.get_reply('/ip/firewall/nat/print',
                                 ".proplist=.id",
@@ -105,7 +102,7 @@ class NatsController < ApplicationController
   end
 
   def destroy
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     nat = Nat.find(params[:id])
     tik.get_reply('/ip/firewall/nat/remove',
     "=.id=#{tik.get_reply('/ip/firewall/nat/print',

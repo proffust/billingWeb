@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_auth_user!
-  M_HOST = "10.11.10.217"
-  M_USER = "admin"
-  M_PASS = "password"
   MTik::verbose=false
   def new
     @user = User.new
   end
 
   def create
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     @user = User.new(users_params)
     @user.access_state = true
     if @user.save
@@ -49,7 +46,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     if user.update(users_params)
       tik.get_reply('/ip/firewall/address-list/set',
                     "=address=#{user.address}",
@@ -93,7 +90,7 @@ class UsersController < ApplicationController
   end
 
   def extend
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     user = User.find(params[:id])
     user.date_of_disconnect = user.date_of_disconnect + 1.month
     if Date.today < user.date_of_disconnect
@@ -110,7 +107,7 @@ class UsersController < ApplicationController
   end
 
   def deactivate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     user = User.find(params[:id])
     user.access_state = false
     user.update(update_params)
@@ -124,7 +121,7 @@ class UsersController < ApplicationController
   end
 
   def activate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     user = User.find(params[:id])
     user.access_state = true
     user.update(update_params)
@@ -138,7 +135,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => BillingWeb::M_HOST, :user => BillingWeb::M_USER, :pass => BillingWeb::M_PASS)
     user = User.find(params[:id])
     tik.get_reply('/ip/firewall/address-list/remove',
                   "=.id=#{tik.get_reply('/ip/firewall/address-list/print',
