@@ -1,7 +1,7 @@
 require_relative 'boot'
-if File.file? '../../credentials.rb' 
+if File.file? '../../credentials.rb'
   require_relative '../../credentials.rb'
-
+end
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
