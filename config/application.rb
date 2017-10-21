@@ -1,4 +1,5 @@
 require_relative 'boot'
+require_relative '../../credentials.rb'
 
 require 'rails/all'
 
@@ -7,9 +8,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module BillingWeb
-  M_HOST = "10.11.10.239"
-  M_USER = "admin"
-  M_PASS = "password"
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
