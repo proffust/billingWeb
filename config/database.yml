@@ -10,14 +10,6 @@ default: &default
   timeout: 5000
 
 development:
-#  adapter: mysql2
-#  encoding: utf8
-#  database: BillingDB
-#  host: localhost
-#  pool: 5
-#  username: rails
-#  password: password
-#  socket: /var/run/mysqld/mysqld.sock
   <<: *default
   database: db/development.sqlite3
 
@@ -29,8 +21,16 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: BillingDB
+  host: localhost
+  pool: 5
+  username: rails
+  password: password
+  socket: /var/run/mysqld/mysqld.sock
+#  <<: *default
+#  database: db/production.sqlite3
 
 
 #создание БД  CREATE DATABASE BillingDB DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
