@@ -1,5 +1,6 @@
 require_relative 'boot'
-require_relative '../../credentials.rb'
+if File.file? '../../credentials.rb' 
+  require_relative '../../credentials.rb'
 
 require 'rails/all'
 
