@@ -28,7 +28,7 @@ production:
   pool: 5
   username: rails
   password: password
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /var/lib/mysql/mysql.sock
 #  <<: *default
 #  database: db/production.sqlite3
 
