@@ -18,7 +18,7 @@ class NatsController < ApplicationController
       "=to-addresses=#{@nat.int_ip}",
       "=to-ports=#{@nat.int_port}",
       "=protocol=tcp",
-      "=in-interface=ether1",
+      "=in-interface=#{M_EXT_IFACE}",
       "=dst-port=#{@nat.ext_port}",
       "=comment=#{@nat.name}_#{Nat.last['id']}") do |request, sentence|
         @trap = request.reply.find_sentence('!trap')
@@ -52,7 +52,7 @@ class NatsController < ApplicationController
                     "=to-addresses=#{nat.int_ip}",
                     "=to-ports=#{nat.int_port}",
                     "=protocol=tcp",
-                    "=in-interface=ether1",
+                    "=in-interface=#{M_EXT_IFACE}",
                     "=dst-port=#{nat.ext_port}",
                     "=comment=#{nat.name}_#{nat.id}",
                     "=.id=#{edit_nat_id}")
