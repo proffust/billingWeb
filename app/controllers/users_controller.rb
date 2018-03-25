@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
+    old_address = user.address
     tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
     if user.update(users_params)
       tik.get_reply('/ip/firewall/address-list/set',
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
                     "=comment=#{user.name}",
                     "=.id=#{tik.get_reply('/ip/firewall/address-list/print',
                                                ".proplist=.id",
-                                               "?address=#{user.address}")[0]['.id']}") do |request, sentence|
+                                               "?address=#{old_address}")[0]['.id']}") do |request, sentence|
         @trap = request.reply.find_sentence('!trap')
         if @trap.nil?
           tik.get_reply('/queue/simple/set',
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
                         "=max-limit=#{user.is_router ? "40M/40M" : "20M/20M"}",
                         "=.id=#{tik.get_reply('/queue/simple/print',
                                                    ".proplist=.id",
-                                                   "?target=#{user.address}/32")[0]['.id']}") do |request, sentence|
+                                                   "?target=#{old_address}/32")[0]['.id']}") do |request, sentence|
             @trap = request.reply.find_sentence('!trap')
             if @trap.nil?
               tik.close
