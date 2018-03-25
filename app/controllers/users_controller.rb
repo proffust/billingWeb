@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.find_by_sql("select * from users ORDER BY inet_aton(address)")
   end
 
   def show
