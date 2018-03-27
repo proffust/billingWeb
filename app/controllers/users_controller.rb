@@ -83,7 +83,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.find_by_sql("select * from users ORDER BY inet_aton(address)")
+    if Rails.env.production?
+      @users = User.find_by_sql("select * from users ORDER BY inet_aton(address)")
+    else
+      @users = User.all
+    end
   end
 
   def show
