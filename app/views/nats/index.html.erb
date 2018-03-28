@@ -1,5 +1,8 @@
 <table class="table_styled">
-  <caption>Все наты <%= link_to 'Добавить Нат', new_nat_path, class:"no_decoration" %></caption>
+  <caption>
+    <%= link_to image_tag('home-filled-building'), root_path, class:"home_button" %>
+    Все наты <%= link_to 'Добавить Нат', new_nat_path, class:"no_decoration" %>
+  </caption>
   <tr>
     <th>Имя</th>
     <th>Внешний порт</th>

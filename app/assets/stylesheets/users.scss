@@ -4,6 +4,12 @@
 a, input{
   font-size: 14px;
 }
+a.home_button{
+  position: fixed;
+  left: 30px;
+  top: 25px;
+  border-radius: 10px 10px 10px 10px;
+}
 
 div.forms{
   color: #CAD4D6;
@@ -12,6 +18,7 @@ div.forms{
   padding: 50px;
   background: #252F48;
   border-radius: 10px 10px 0 0;
+  margin: 10px;
 }
 
 .form-row {
@@ -184,7 +191,6 @@ body{
   display: inline-block;
   padding: 5px 10px;
   background: #B58D6B;
-  position: relative;
 }
 
 .table_styled a:hover{
