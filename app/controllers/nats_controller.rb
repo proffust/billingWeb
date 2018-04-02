@@ -14,7 +14,7 @@ class NatsController < ApplicationController
       tik.get_reply(
       '/ip/firewall/nat/add',
       "=chain=dstnat",
-      "=action=netmap",
+      "=action=dst-nat",
       "=to-addresses=#{@nat.int_ip}",
       "=to-ports=#{@nat.int_port}",
       "=protocol=tcp",
