@@ -61,7 +61,6 @@ h1{
 	background: #B58D6B;
 	color:white;
   border: 0px;
-/*  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; */
 }
 
 a.form-row {
@@ -173,14 +172,15 @@ body{
   background: inherit;
 }
 
-.table_styled a.on{
+.table_styled input.on{
   color: #0C162F;
   display: inline-block;
   padding: 5px 10px;
   background: #B5A96B;
   position: relative;
+  border: 0px;
 }
-.table_styled a.on:hover{
+.table_styled input.on:hover{
   background: #B5AC7F;
   text-decoration: underline;
 }
@@ -191,6 +191,20 @@ body{
   display: inline-block;
   padding: 5px 10px;
   background: #B58D6B;
+}
+
+.table_styled input {
+  text-decoration: none;
+  color: #0C162F;
+  display: inline-block;
+  padding: 5px 10px;
+  background: #B58D6B;
+  border: 0px;
+}
+
+.table_styled input:hover{
+  background: #B5987F;
+  text-decoration: underline;
 }
 
 .table_styled a:hover{
