@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_auth_user!
+  before_action :authenticate_auth_user! , except: [:info]
   MTik::verbose=false
   def new
     @user = User.new
@@ -156,7 +156,8 @@ class UsersController < ApplicationController
   end
 
   def info
-    @user=User.find_by(address: request.remote_ip)
+    @ipaddress = request.remote_ip
+    @user=User.find_by(address: @ipaddress)
   end
 
   private

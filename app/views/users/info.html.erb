@@ -1,3 +1,5 @@
-<p>Твой адрес <%= @user.address %>
-<p>Состояние твоего подключения <%= @user.access_state ? "Включено" : "Выключено" %>
-<p>Дата отключения <%= @user.date_of_disconnect%>
+<p>Твой адрес <%= @ipaddress %>
+<% if @user %>
+  <p>Состояние твоего подключения <%= @user.access_state ? "Включено" : "Выключено" %>
+  <p>Дата отключения <%= @user.date_of_disconnect%>
+<% end %>
