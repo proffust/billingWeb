@@ -20,7 +20,7 @@ class UsersController < ApplicationController
           tik.get_reply(
           '/queue/simple/add',
           "=max-limit=#{@user.is_router ? "40M/40M" : "20M/20M"}",
-          "=name=#{@user.name }",
+          "=name=#{@user.name}",
           "=target=#{@user.address}",
           "=queue=default/default",
           "=total-queue=default") do |request, sentence|
@@ -153,6 +153,10 @@ class UsersController < ApplicationController
     user.destroy
     tik.close
     redirect_to action: "index"
+  end
+
+  def info
+    @user=User.find_by(address: request.remote_ip)
   end
 
   private
