@@ -156,7 +156,7 @@ class UsersController < ApplicationController
   end
 
   def info
-    @ipaddress = request.remote_ip
+    @ipaddress = request.env['X-Real-IP']
     @user=User.find_by(address: @ipaddress)
   end
 
