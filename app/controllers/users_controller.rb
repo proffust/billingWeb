@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_auth_user! , except: [:info]
   MTik::verbose=false
-  MTik::USE_SSL=false
   def new
     @user = User.new
   end
