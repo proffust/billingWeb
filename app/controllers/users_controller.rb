@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_auth_user! , except: [:info]
   MTik::verbose=false
+  MTik::USE_SSL=false
   def new
     @user = User.new
   end
@@ -112,7 +113,7 @@ class UsersController < ApplicationController
   end
 
   def deactivate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :use_ssl => false)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
     user = User.find(params[:id])
     user.access_state = false
     user.update(update_params)
