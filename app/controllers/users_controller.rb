@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unecrypted_plaintext => true)
     @user = User.new(users_params)
     @user.access_state = true
     if @user.save
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     old_address = user.address
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unecrypted_plaintext => true)
     if user.update(users_params)
       tik.get_reply('/ip/firewall/address-list/set',
                     "=address=#{user.address}",
@@ -95,7 +95,7 @@ class UsersController < ApplicationController
   end
 
   def extend
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unecrypted_plaintext => true)
     user = User.find(params[:id])
     user.date_of_disconnect = user.date_of_disconnect + 1.month
     if Date.today < user.date_of_disconnect
@@ -126,7 +126,7 @@ class UsersController < ApplicationController
   end
 
   def activate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unecrypted_plaintext => true)
     user = User.find(params[:id])
     user.access_state = true
     user.update(update_params)
@@ -140,7 +140,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unecrypted_plaintext => true)
     user = User.find(params[:id])
     tik.get_reply('/ip/firewall/address-list/remove',
                   "=.id=#{tik.get_reply('/ip/firewall/address-list/print',
