@@ -112,7 +112,7 @@ class UsersController < ApplicationController
   end
 
   def deactivate
-    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unencrypted_plaintext => true)
+    tik = MTik::Connection.new(:host => M_HOST, :user => M_USER, :pass => M_PASS, :unecrypted_plaintext => true)
     user = User.find(params[:id])
     user.access_state = false
     user.update(update_params)
